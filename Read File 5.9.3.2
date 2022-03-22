@@ -1,0 +1,883 @@
+#!/bin/zsh
+
+#5.9.3.2 - 2021-06-22 15.44
+#Added geo01844 Georgina Retoucher17
+
+#5.9.3.1
+#Now it check the latest export from both SS Backup and SS server
+
+#5.9.3
+#Everytime dashboard is run, it will create a copy of it on the Desktop ServerImageFlow folder and on the server
+
+#5.9.2
+#Checks how many times exported now in both SS Server + SS Backup = TOTAL
+#kMDItemContentCreationDate - for files already transferred into backup
+#kMDItemContentModificationDate - for files still in Styleshoot Server
+
+#################################################################################################
+#################################################################################################
+
+echo $(date +%F_%T) > ~/Desktop/ServerImageFlow.csv
+
+echo " " >> ~/Desktop/ServerImageFlow.csv
+
+echo ", , Images, SKUs" >> ~/Desktop/ServerImageFlow.csv
+ 
+
+#################################################################################################
+#################################################################################################
+
+##Available to Retouch####
+echo "▶︎▶︎ SS Server" >> ~/Desktop/ServerImageFlow.csv
+
+#kMDItemContentCreationDate - for files already transferred into backup
+#kMDItemContentModificationDate - for files still in Styleshoot Server
+
+cd /Volumes/styleshoot/TJXE-HHPS-SS01 && echo "SS1 $((`mdls -name kMDItemContentCreationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS1/* | grep "$(date +"%Y-%m-%d")" | wc -l` + `mdls -name kMDItemContentModificationDate /Volumes/styleshoot/TJXE-HHPS-SS01/* | grep "$(date +"%Y-%m-%d")" | wc -l`)) x `mdls -name kMDItemContentModificationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS1/* /Volumes/styleshoot/TJXE-HHPS-SS01/* | grep "$(date +"%Y-%m-%d")" | awk '{print $3,$4}' | sort | tail -1`,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls -R | grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/styleshoot/TJXE-HHPS-SS02 && echo "SS2 $((`mdls -name kMDItemContentCreationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS2/* | grep "$(date +"%Y-%m-%d")" | wc -l` + `mdls -name kMDItemContentModificationDate /Volumes/styleshoot/TJXE-HHPS-SS02/* | grep "$(date +"%Y-%m-%d")" | wc -l`)) x `mdls -name kMDItemContentModificationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS2/* /Volumes/styleshoot/TJXE-HHPS-SS02/* | grep "$(date +"%Y-%m-%d")" | awk '{print $3,$4}' | sort | tail -1`,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls -R | grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/styleshoot/TJXE-HHPS-SS03 && echo "SS3 $((`mdls -name kMDItemContentCreationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS3/* | grep "$(date +"%Y-%m-%d")" | wc -l` + `mdls -name kMDItemContentModificationDate /Volumes/styleshoot/TJXE-HHPS-SS03/* | grep "$(date +"%Y-%m-%d")" | wc -l`)) x `mdls -name kMDItemContentModificationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS3/* /Volumes/styleshoot/TJXE-HHPS-SS03/* | grep "$(date +"%Y-%m-%d")" | awk '{print $3,$4}' | sort | tail -1`,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls -R | grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/styleshoot/TJXE-HHPS-SS04 && echo "SS4 $((`mdls -name kMDItemContentCreationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS4/* | grep "$(date +"%Y-%m-%d")" | wc -l` + `mdls -name kMDItemContentModificationDate /Volumes/styleshoot/TJXE-HHPS-SS04/* | grep "$(date +"%Y-%m-%d")" | wc -l`)) x `mdls -name kMDItemContentModificationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS4/* /Volumes/styleshoot/TJXE-HHPS-SS04/* | grep "$(date +"%Y-%m-%d")" | awk '{print $3,$4}' | sort | tail -1`,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls -R | grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/styleshoot/TJXE-HHPS-SS05 && echo "SS5 $((`mdls -name kMDItemContentCreationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS5/* | grep "$(date +"%Y-%m-%d")" | wc -l` + `mdls -name kMDItemContentModificationDate /Volumes/styleshoot/TJXE-HHPS-SS05/* | grep "$(date +"%Y-%m-%d")" | wc -l`)) x `mdls -name kMDItemContentModificationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS5/* /Volumes/styleshoot/TJXE-HHPS-SS05/* | grep "$(date +"%Y-%m-%d")" | awk '{print $3,$4}' | sort | tail -1`,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls -R | grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/styleshoot/TJXE-HHPS-SS06 && echo "SS6 $((`mdls -name kMDItemContentCreationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS6/* | grep "$(date +"%Y-%m-%d")" | wc -l` + `mdls -name kMDItemContentModificationDate /Volumes/styleshoot/TJXE-HHPS-SS06/* | grep "$(date +"%Y-%m-%d")" | wc -l`)) x `mdls -name kMDItemContentModificationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS6/* /Volumes/styleshoot/TJXE-HHPS-SS06/* | grep "$(date +"%Y-%m-%d")" | awk '{print $3,$4}' | sort | tail -1`,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls -R | grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/styleshoot/TJXE-HHPS-SS07 && echo "SS7 $((`mdls -name kMDItemContentCreationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS7/* | grep "$(date +"%Y-%m-%d")" | wc -l` + `mdls -name kMDItemContentModificationDate /Volumes/styleshoot/TJXE-HHPS-SS07/* | grep "$(date +"%Y-%m-%d")" | wc -l`)) x `mdls -name kMDItemContentModificationDate /Volumes/Hams\ Hall\ Workspace/SS\ Backup/$(date +%Y%m%d)/SS7/* /Volumes/styleshoot/TJXE-HHPS-SS07/* | grep "$(date +"%Y-%m-%d")" | awk '{print $3,$4}' | sort | tail -1`,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls -R | grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+
+echo " " >> ~/Desktop/ServerImageFlow.csv
+
+#################################################################################################
+#################################################################################################
+
+
+echo "▶︎▶︎ Hams Hall Workspace" >> ~/Desktop/ServerImageFlow.csv
+
+#Styleshoots
+cd /Volumes/Hams\ Hall\ Workspace/StyleShoot1_WIP && echo "SS1:"","","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/StyleShoot2_WIP && echo "SS2:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/StyleShoot3_WIP && echo "SS3:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/StyleShoot4_WIP && echo "SS4:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/StyleShoot5_WIP && echo "SS5:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/StyleShoot6_WIP && echo "SS6:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/StyleShoot7_WIP && echo "SS7:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+echo " " >> ~/Desktop/ServerImageFlow.csv
+
+##MQ and Tabletop
+cd /Volumes/Hams\ Hall\ Workspace/Mannequin_1_WIP && echo "MQ1:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/Mannequin_2_WIP && echo "MQ2:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+echo " " >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 1_WIP && echo "TT1:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 2_WIP && echo "TT2:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 3_WIP && echo "TT3:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 4_WIP && echo "TT4:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 5_WIP && echo "TT5:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 6_WIP && echo "TT6:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 7_WIP && echo "TT7:,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+cd /Volumes/Hams\ Hall\ Workspace/Holding\ Area/ && echo "Holding Area: ,,"`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+
+#Total Images, SKUs available to retouch
+echo ", Total:," $((`cd /Volumes/Hams\ Hall\ Workspace/StyleShoot1_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot2_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot3_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot4_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot5_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot6_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot7_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS01 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS02 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS03 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS04 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS05 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS06 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS07 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Holding\ Area/ && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Mannequin_1_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Mannequin_2_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 1_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 2_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 3_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 4_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 5_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 6_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 7_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`)) \
+"," $((`cd /Volumes/Hams\ Hall\ Workspace/StyleShoot1_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot2_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot3_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot4_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot5_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot6_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot7_WIP && ls -R | grep \_01.tif$ | wc -l`\
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS01 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS02 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS03 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS04 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS05 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS06 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS07 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Holding\ Area/ && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Mannequin_1_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Mannequin_2_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 1_WIP && ls -R |grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 2_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 3_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 4_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 5_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 6_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 7_WIP && ls -R | grep \_01.tif$ | wc -l`))  >> ~/Desktop/ServerImageFlow.csv
+
+echo " " >> ~/Desktop/ServerImageFlow.csv
+
+
+#####################RETOUCH####################################
+#Don't forget to specify login ID per USER
+#E.g. when grabbing from the server all script should specify $(whoami)
+#whereas in the script below the user ID (e.g. dan00477) should always be input manually 
+################################################################
+
+####################VARIABLES###################################
+#Create Folder
+ServerImageFlow=/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)
+mkdir $ServerImageFlow
+
+#Images which reached Image Store TODAY
+outfileImageStore="$ServerImageFlow"/tempImageStore.csv
+find /Volumes/Image\ Store/$(date +%Y-%m-%d)/jpg -type f -exec basename {} \; > "$outfileImageStore"
+
+#1 week of TIFF files from Image Store
+#pipe into sort, to prepare for comm comparison
+#then pipe into uniq , as we don't mind when it was uploaded as long as it was uploaded and it is 3s faster
+
+outfileImageStoreTIFF="$ServerImageFlow"/tempImageStoreTIFF.csv
+find /Volumes/Image\ Store/$(date +%Y-%m-%d)/tif \
+/Volumes/Image\ Store/$(date -v-1d +%F)/tif \
+/Volumes/Image\ Store/$(date -v-2d +%F)/tif \
+/Volumes/Image\ Store/$(date -v-4d +%F)/tif \
+/Volumes/Image\ Store/$(date -v-5d +%F)/tif \
+/Volumes/Image\ Store/$(date -v-6d +%F)/tif \
+-type f -exec basename {} \; | sort | uniq > "$ServerImageFlow"/tempImageStoreTIFF.csv
+
+ 
+################################################################
+
+echo "▶︎▶︎RETOUCH" >> ~/Desktop/ServerImageFlow.csv
+
+################################################################
+#####RT1(jam03017)#####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher1_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/jam03017-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/jam03017-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/jam03017-WIP.csv
+commOutputJAM03017=$(cat "$ServerImageFlow"/jam03017-WIP.csv | wc -l)
+echo "RT1 (Jamie), WIP:," $(($commOutputJAM03017)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "jam03017"
+
+rt1function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/jam03017-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅" 
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+
+#Count Images/SKUs ##Uploaded##
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt1function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/jam03017-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/jam03017-NOTinImageStore.csv
+
+
+
+#####RT2(adr01022)#####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher2_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/adr01022-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/adr01022-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/adr01022-WIP.csv
+commOutputADR01022=$(cat "$ServerImageFlow"/adr01022-WIP.csv | wc -l)
+echo "RT2 (Adrian), WIP:," $(($commOutputADR01022)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "adr01022"
+
+rt2function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/adr01022-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput" 
+fi
+
+}
+
+
+#Count Images/SKUs ##Uploaded##
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt2function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/adr01022-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/adr01022-NOTinImageStore.csv
+
+
+
+#####RT3(dan00477)#####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher3_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/dan00477-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/dan00477-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/dan00477-WIP.csv
+commOutputDAN00477=$(cat "$ServerImageFlow"/dan00477-WIP.csv | wc -l)
+echo "RT3 (Daniel), WIP:," $(($commOutputDAN00477)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "dan00477"
+
+rt3function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/dan00477-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]];
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi 
+
+}
+
+
+#Count Images/SKUs ##Uploaded##
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt3function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/dan00477-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/dan00477-NOTinImageStore.csv
+
+
+
+#####RT4(mil00081)#####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher4_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/mil00081-FolderCountWIP.csv
+comm -23 <(sort "$ServerImageFlow"/mil00081-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/mil00081-WIP.csv
+commOutputMIL00081=$(cat "$ServerImageFlow"/mil00081-WIP.csv | wc -l)
+echo "RT4 (Milosz), WIP:," $(($commOutputMIL00081)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "mil00081"
+
+rt4function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/mil00081-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+
+#Count Images/SKUs ##Uploaded##
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt4function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/mil00081-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/mil00081-NOTinImageStore.csv
+
+
+
+####RT5(jul00485)####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher5_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/jul00485-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/jul00485-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/jul00485-WIP.csv
+commOutputJUL00485=$(cat "$ServerImageFlow"/jul00485-WIP.csv | wc -l)
+echo "RT5 (Juliet), WIP:," $(($commOutputJUL00485)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "jul00485"
+
+rt5function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/jul00485-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+#Count Images/SKUs Uploaded
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt5function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/jul00485-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/jul00485-NOTinImageStore.csv
+
+
+
+####RT6(mar01888)####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher6_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/mar01888-FolderCountWIP.csv
+comm -23 <(sort "$ServerImageFlow"/mar01888-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/mar01888-WIP.csv
+commOutputMAR01888=$(cat "$ServerImageFlow"/mar01888-WIP.csv | wc -l)
+echo "RT6 (Mark), WIP:," $(($commOutputMAR01888)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "mar01888"
+
+rt6function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/mar01888-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+#Count Images/SKUs Uploaded
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt6function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/mar01888-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/mar01888-NOTinImageStore.csv
+
+
+
+####RT7(seu00006)####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher7_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/seu00006-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/seu00006-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/seu00006-WIP.csv
+commOutputSEU00006=$(cat "$ServerImageFlow"/seu00006-WIP.csv | wc -l)
+echo "RT7 (Yoanna), WIP:," $(($commOutputSEU00006)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "seu00006"
+
+rt7function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/seu00006-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+
+#Count Images/SKUs Uploaded
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt7function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/seu00006-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/seu00006-NOTinImageStore.csv
+
+
+
+####RT8(jan02672)####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher8_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/jan02672-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/jan02672-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/jan02672-WIP.csv
+commOutputJAN02672=$(cat "$ServerImageFlow"/jan02672-WIP.csv | wc -l)
+echo "RT8 (Janey), WIP:," $(($commOutputJAN02672)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "jan02672"
+
+rt8function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/jan02672-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+#Count Images/SKUs Uploaded
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt8function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/jan02672-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/jan02672-NOTinImageStore.csv
+
+
+
+#####RT9(hen00261)#####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher9_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/hen00261-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/hen00261-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/hen00261-WIP.csv
+commOutputHEN00261=$(cat "$ServerImageFlow"/hen00261-WIP.csv | wc -l)
+echo "RT9 (Henriette), WIP:," $(($commOutputHEN00261)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "hen00261"
+
+rt9function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/hen00261-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+#Count Images/SKUs ##Uploaded##
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt9function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/hen00261-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/hen00261-NOTinImageStore.csv
+
+
+
+#####RT10(cal00053)#####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher10_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/cal00053-FolderCountWIP.csv
+comm -23 <(sort "$ServerImageFlow"/cal00053-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/cal00053-WIP.csv 
+commOutputCAL00053=$(cat "$ServerImageFlow"/cal00053-WIP.csv | wc -l)
+echo "RT10 (Cale), WIP:," $(($commOutputCAL00053)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "cal00053"
+
+rt10function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/cal00053-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+#Count Images/SKUs ##Uploaded##
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt10function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/cal00053-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/cal00053-NOTinImageStore.csv
+
+
+
+#####RT13(kei00084)#####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher13_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/kei00084-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/kei00084-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/kei00084-WIP.csv
+commOutputKEI00084=$(cat "$ServerImageFlow"/kei00084-WIP.csv | wc -l)
+echo "RT13 (Keith), WIP:," $(($commOutputKEI00084)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "kei00084"
+
+rt13function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/kei00084-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+
+#Count Images/SKUs ##Uploaded##
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt13function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/kei00084-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/kei00084-NOTinImageStore.csv
+
+
+
+#####RT16(reb00196)#####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher16_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/reb00196-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/reb00196-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/reb00196-WIP.csv
+commOutputREB00196=$(cat "$ServerImageFlow"/reb00196-WIP.csv | wc -l)
+echo "RT16 (Bex), WIP:," $(($commOutputREB00196)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "reb00196"
+
+rt16function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/reb00196-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+
+#Count Images/SKUs ##Uploaded##
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt16function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/reb00196-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/reb00196-NOTinImageStore.csv
+
+
+#####RT17(geo01844)Georgia#####
+
+#Remove CR lines from log created by PHOTOSHOP javascript by converting it to ASCII text file
+tr '\r' '\n' </Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-UploadedCR.csv >/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-UploadedASCII.csv
+
+#Combine ASCII text file with Shell file 
+cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-UploadedSHELL.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-UploadedASCII.csv >> /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-Uploaded.csv
+
+#Check What was already uploaded ##WIP## e.g.: What reached Image Store, and if it has then substract that from Work In Progress
+cd /Volumes/Hams\ Hall\ Workspace/ReToucher17_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' > "$ServerImageFlow"/geo01844-FolderCountWIP.csv 
+comm -23 <(sort "$ServerImageFlow"/geo01844-FolderCountWIP.csv) <(sort "$outfileImageStoreTIFF") > "$ServerImageFlow"/geo01844-WIP.csv
+commOutputREB00196=$(cat "$ServerImageFlow"/geo01844-WIP.csv | wc -l)
+echo "RT17 (Georgia), WIP:," $(($commOutputREB00196)) >> ~/Desktop/ServerImageFlow.csv
+
+
+#Check if all images have succesfully reached Image Store of username "geo01844"
+
+rt17function () {
+
+commOutput=$(comm -23 <(sort "$ServerImageFlow"/geo01844-Uploaded.csv | uniq) <(sort "$outfileImageStore") | wc -l)
+
+if [[ $commOutput -eq 0 ]]; 
+then
+	echo "✅"
+else
+	echo "🛑" "$commOutput"
+fi
+
+}
+
+
+#Count Images/SKUs ##Uploaded##
+echo "," "Uploaded: ," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-Uploaded.csv | sort | uniq | wc -l` "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` "," `rt16function` >> ~/Desktop/ServerImageFlow.csv
+
+#If any files haven't reached Image Store then log them in username-NOTinImageStore.csv
+comm -23 <(sort "$ServerImageFlow"/geo01844-Uploaded.csv | uniq) <(sort "$outfileImageStore" | uniq) > "$ServerImageFlow"/geo01844-NOTinImageStore.csv
+
+
+#TOTAL WIP
+echo ", Total WIP:," $((`cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-WIP.csv | wc -l`)) >> ~/Desktop/ServerImageFlow.csv
+
+
+
+#TOTAL Uploaded IMAGES/ SKUs in RETOUCH
+#Count Total Images from userID-UploadedASCII.csv not from CR
+echo ", Total Uploaded:," $((`cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-Uploaded.csv | sort | uniq | wc -l`)) \
+"," $((`cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l`)) >> ~/Desktop/ServerImageFlow.csv
+
+###########################################################################
+#################################SUMMARY###################################
+
+##############LOG STYLISTS###################
+
+echo " " >> ~/Desktop/ServerImageFlow.csv
+echo ",███████████,," >> ~/Desktop/ServerImageFlow.csv
+echo "▶︎▶︎Stylists" >> ~/Desktop/ServerImageFlow.csv
+
+#Total exported by stylists TODAY
+#Log all into 1 file
+cat "$ServerImageFlow"/SS1.csv \
+"$ServerImageFlow"/SS2.csv \
+"$ServerImageFlow"/SS3.csv \
+"$ServerImageFlow"/SS4.csv \
+"$ServerImageFlow"/SS5.csv \
+"$ServerImageFlow"/SS6.csv \
+"$ServerImageFlow"/SS7.csv | sort > "$ServerImageFlow"/TotalExportedByStylistsToday.csv
+
+TotalExportedByStylists=/Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/TotalExportedByStylistsToday.csv
+
+#Export log into dashboard
+echo "IN (Total shot TODAY): ,, `cat "$TotalExportedByStylists" | wc -l`" "," `cat "$TotalExportedByStylists" | grep _01 | wc -l` >> ~/Desktop/ServerImageFlow.csv
+
+#Total OUT
+comm -12 <(sort "$TotalExportedByStylists") <(sort "$outfileImageStoreTIFF") > /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/Styleshoot-UPLOADEDtoImageStore.csv
+echo "OUT (Uploaded): ,, `cat "$ServerImageFlow"/Styleshoot-UPLOADEDtoImageStore.csv | wc -l`" "," `cat "$ServerImageFlow"/Styleshoot-UPLOADEDtoImageStore.csv | grep _01 | sort | uniq | wc -l` >> ~/Desktop/ServerImageFlow.csv
+
+#Total WIP or MISSING: Substract Total IN from Image store. Which means Those images either are neckshots/ bad naming, MISSING or deleted
+comm -23 <(sort "$TotalExportedByStylists") <(sort "$outfileImageStoreTIFF") > /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/Styleshoot-NOTinImageStore.csv
+echo "WIP (or neckshots/MISSING/deleted): ,, `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/Styleshoot-NOTinImageStore.csv | wc -l`" "," `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/Styleshoot-NOTinImageStore.csv | grep _01 | sort | uniq | wc -l` ",🛑" >> ~/Desktop/ServerImageFlow.csv
+
+echo " " >> ~/Desktop/ServerImageFlow.csv
+echo ",███████████,," >> ~/Desktop/ServerImageFlow.csv
+
+echo "⬇︎ Total Available to Retouch:,," $((`cd /Volumes/Hams\ Hall\ Workspace/StyleShoot1_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot2_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot3_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot4_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot5_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot6_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot7_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS01 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS02 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS03 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS04 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS05 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS06 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS07 && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Holding\ Area/ && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Mannequin_1_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Mannequin_2_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 1_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 2_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 3_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 4_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 5_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 6_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 7_WIP && ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`)) \
+"," $((`cd /Volumes/Hams\ Hall\ Workspace/StyleShoot1_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot2_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot3_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot4_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot5_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot6_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/StyleShoot7_WIP && ls -R | grep \_01.tif$ | wc -l`\
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS01 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS02 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS03 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS04 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS05 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS06 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/styleshoot/TJXE-HHPS-SS07 && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Holding\ Area/ && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Mannequin_1_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Mannequin_2_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 1_WIP && ls -R |grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 2_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 3_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 4_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 5_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 6_WIP && ls -R | grep \_01.tif$ | wc -l` \
+	+ `cd /Volumes/Hams\ Hall\ Workspace/Tabletop\ 7_WIP && ls -R | grep \_01.tif$ | wc -l`)) >> ~/Desktop/ServerImageFlow.csv
+
+
+cd /Volumes/Hams\ Hall\ Workspace/Image_Corral/ && echo "+ Image Corral,"","`ls -R | egrep '\.tif$|\.tiff$|\.jpg$|\.jpeg$|\.png$' | wc -l`","`ls |grep \_01.tif$ | wc -l`  >> ~/Desktop/ServerImageFlow.csv
+
+
+echo "⬇︎ Total in Retouch:,," $((`cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-WIP.csv | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-WIP.csv | wc -l`)) \
+", $((`cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-WIP.csv | grep '\_01.tif$' | sort | uniq | wc -l`)) ~" >> ~/Desktop/ServerImageFlow.csv
+
+echo "⬇︎ Total Uploaded:,," $((`cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-UploadedASCII.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-Uploaded.csv | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-Uploaded.csv | sort | uniq | wc -l`)) \
+"," $((`cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jam03017-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/adr01022-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/dan00477-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mil00081-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jul00485-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/mar01888-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/seu00006-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/jan02672-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/hen00261-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/cal00053-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/kei00084-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/reb00196-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l` \
+	+ `cat /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/geo01844-Uploaded.csv | grep '\_01.jpg$' | sort | uniq | wc -l`)) >> ~/Desktop/ServerImageFlow.csv
+
+
+echo "Image Store:,," `cd /Volumes/Image\ Store/$(date +%Y-%m-%d)/tif && ls | wc -l` \
+"," $((`cd /Volumes/Image\ Store/$(date +%Y-%m-%d)/tif && ls | grep \_01.tif$ | wc -l`)) >> ~/Desktop/ServerImageFlow.csv
+
+#Save it on local Desktop and the Server
+mkdir -p /Users/$(whoami)/Desktop/ServerImageFlow/$(date +%Y-%m-%d)
+mkdir /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/Dashboard
+cp ~/Desktop/ServerImageFlow.csv ~/Desktop/ServerImageFlow/$(date +%Y-%m-%d)/ServerImageFlow\ $(date +%Y-%m-%d)\ →\ $(date +%H⍮%M).csv
+cp ~/Desktop/ServerImageFlow.csv /Volumes/Hams\ Hall\ Workspace/ServerImageFlow/$(date +%Y-%m-%d)/Dashboard/ServerImageFlow\ $(date +%Y-%m-%d)\ →\ $(date +%H⍮%M).csv
